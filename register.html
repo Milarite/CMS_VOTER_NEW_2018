@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voting app</title><!-- Fav Icon -->
+<link rel="shortcut icon" href="favicon.ico">
+
+<!-- Owl carousel -->
+<link href="./css/owl.carousel.css" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="./css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom Style -->
+<link href="./css/main.css" rel="stylesheet">
+<link href="./css/custom.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="css/angular-datepicker.css"/>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+<script>
+$( function() {
+ // $( "#datepicker" ).datepicker();
+} );
+</script>
+<!-- angulars-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdn.ethers.io/scripts/ethers-v3.min.js"
+charset="utf-8"
+type="text/javascript">
+</script>
+<script src="./js/modules/ethtx.js"></script>
+<script src="./js/modules/mined-web.js"></script>
+<script src="./js/modules/controller.js"></script>
+<script src="./js/modules/service.js"></script>
+<script src="./js/modules/angular-datepicker.js"></script>
+<script src="./js/modules/config.js"></script>
+<script src="./js/modules/app.js"></script>
+
+<!-- end of angulars-->
+</head>
+<body ng-app="starter" ng-controller="signupCtrl">
+<!-- Header start -->
+<header ng-include="'./shared/header.html'">
+   
+</header>
+<!-- Header end --> <!-- Page Title start -->
+<!-- <div class="pageTitle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">Register</h1>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="breadCrumb"><a href="#.">Home</a> / <span>Register</span></div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Page Title End -->
+
+<div class="listpgWraper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="userccount">
+          
+            <h2>Sign up</h5>
+          <div class="userbtns">
+            <ul class="nav nav-tabs">
+              <li class="active"><a style="background-color:#F38630" data-toggle="tab" href="javascript:void(0);">Voter</a></li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div id="voter" class="formpanel tab-pane fade in active">
+                <form id="signup" name="signup">
+              <div class="formrow">
+                <input type="text" ng-change="NationalIdValidation(voter.nationalityID)" name="nationalityID" id="nationalityID" ng-model="voter.nationalityID" class="form-control" placeholder="Nationality ID" required>
+                <span class="error-msg" ng-show="signup.nationalityID.$touched && signup.nationalityID.$invalid">this field is required</span>
+                <span class="error-msg" ng-show="signup.nationalityID.$touched && isVoterExistCheck && !signup.nationalityID.$invalid">Nationailty id already exist</span>
+                
+
+              </div>
+              <div class="formrow">
+                <input type="password" name="password" id="password" class="form-control" ng-model="voter.password" placeholder="Password" required>
+                <span class="error-msg" ng-show="signup.password.$touched && signup.password.$invalid">this field is required</span>
+              </div>
+              <div class="formrow">
+                <input type="text" name="name" id="name" class="form-control" ng-model="voter.name" placeholder="Name" required>
+                <span class="error-msg" ng-show="signup.name.$touched && signup.name.$invalid">this field is required</span>
+              </div>
+              <div class="formrow">
+                <input type="text" name="year" id="year" class="form-control" ng-model="voter.year" placeholder="year" required>
+                <span class="error-msg" ng-show="signup.year.$touched && signup.year.$invalid">this field is required</span>
+              </div>
+              <div class="formrow">
+                  <datepicker date-format="dd/MM/yyyy"> <input type="text" name="birthOfdate" id="datepicker" class="form-control" ng-model="voter.birthOfDate" placeholder="Birth Of Date" required/>
+           </datepicker>
+                    <span class="error-msg" ng-show="signup.birthOfDate.$touched && signup.birthOfDate.$invalid">this field is required</span>
+        </div>
+        <div class="formrow">
+                <select name="city" id="city" ng-model="voter.city" class="form-control" required>
+                        <option value="">Select City</option>                                                       
+                    <option value="Amman">Amman</option>
+                    
+                    <option value="Irbid">Irbid</option>
+                    <option value="Zarqa">Zarqa</option>
+                    <option value="Rumtha">Rumtha</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="karak">karak</option>
+                    <option value="Tafileh">Tafileh</option>
+                    <option value="Maan">Maan</option>
+                    <option value="Aqapa">Aqapa</option>
+                    <option value="Rumtha">Rumtha</option>
+                    <option value="salt">salt</option>
+                
+                  </select>
+                  <span class="error-msg" ng-show="signup.city.$touched && signup.city.$invalid">this field is required</span>
+            </div>
+              <div class="formrow">
+            
+              <input ng-click="SignUpBtn(voter)" style="background-color:#F38630" ng-disabled="signup.$invalid || isVoterExistCheck" type="submit" class="btn" value="Signup">
+            </div>
+        </form>
+          </div>
+          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> Already a Member? <a class="l-text" href="login.html" style="color:#F38630">Login Here</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+c
+
+<!-- Bootstrap's JavaScript --> 
+<script src="./js/jquery-2.1.4.min.js"></script> 
+<script src="./js/bootstrap.min.js"></script> 
+
+<!-- loading-->
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
+
+<!-- Owl carousel --> 
+<script src="./js/owl.carousel.js"></script> 
+
+<!-- Custom js --> 
+<script src="./js/script.js"></script>
+</body>
+</html>

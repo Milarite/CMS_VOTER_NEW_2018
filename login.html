@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voting app</title><!-- Fav Icon -->
+<link rel="shortcut icon" href="favicon.ico">
+
+<!-- Owl carousel -->
+<link href="./css/owl.carousel.css" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="./css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom Style -->
+<link href="./css/main.css" rel="stylesheet">
+<link href="./css/custom.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+<!-- angulars-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdn.ethers.io/scripts/ethers-v3.min.js"
+charset="utf-8"
+type="text/javascript">
+</script>
+<script src="./js/modules/ethtx.js"></script>
+<script src="./js/modules/mined-web.js"></script>
+<script src="./js/modules/controller.js"></script>
+<script src="./js/modules/service.js"></script>
+<script src="./js/modules/angular-datepicker.js"></script>
+<script src="./js/modules/config.js"></script>
+<script src="./js/modules/app.js"></script>
+
+<!-- end of angulars-->
+</head>
+<body ng-app="starter" ng-controller="loginCtrl">
+<!-- Header start -->
+<header ng-include="'./shared/header.html'">
+   
+</header>
+<!-- Header end --> 
+
+<!-- Page Title start -->
+<!-- <div class="pageTitle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <h1 class="page-heading">Login</h1>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="breadCrumb"><a href="#">Home</a> / <span>Job Name</span></div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Page Title End -->
+
+  <div class="container margin-top">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="userccount">
+          <div class="socialLogin">
+
+          <h5>Voter Login</h5>
+          <!-- login form -->
+          <form id="login" name="login">
+          <div class="formpanel">
+            <div class="formrow">
+              <input type="text" class="form-control" id="nationalId" name="nationalId" ng-model="voter.nationalId" placeholder="National Id" required>
+              <br/>
+              <span class="error-msg" ng-show="login.nationalId.$touched && login.nationalId.$invalid">this field is required</span>
+            </div>
+            <div class="formrow">
+              <input type="password" class="form-control"  id="password" name="password" ng-model="voter.password" placeholder="Password" required>
+              <p ng-show="loginForm.password.$dirty && loginForm.password.$error.required">*password is required </p>
+              <br/>
+              <span class="error-msg" ng-show="login.password.$touched && login.password.$invalid">this field is required</span>
+            </div>
+            <input ng-click="loginBtn(voter)" ng-disabled = "(login.nationalId.$invalid || !login.nationalId.$dirty) || (login.password.$invalid || !login.password.$dirty)" type="submit" class="btn" value="Login">
+          </div>
+        </form>
+          <!-- login form  end--> 
+          
+          <!-- sign up form -->
+          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a class="l-text" href="register.html">Signup</a></div>
+          <!-- sign up form end--> 
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--Footer-->
+
+
+<!-- Bootstrap's JavaScript --> 
+<script src="./js/jquery-2.1.4.min.js"></script> 
+<script src="./js/bootstrap.min.js"></script> 
+
+<!-- Owl carousel --> 
+<script src="./js/owl.carousel.js"></script> 
+
+<!-- Custom js --> 
+<script src="./js/script.js"></script>
+</body>
+</html>

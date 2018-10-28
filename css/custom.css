@@ -1,0 +1,54 @@
+.userbtns .nav-tabs>li{
+    width:100%;
+}
+.userccount{
+    margin-bottom: 20px !important;
+}
+
+.error-msg{
+
+    color:red;
+}
+img{
+
+    width:100px !important; height:100px !important ;
+}
+.checked {
+    color: orange;
+}
+body{
+    background-color:#f0f0f0;
+}
+.margin-top{
+    margin-top: 100px;
+}
+.header{
+    background-color:black !important;
+}
+
+a{
+    color:white !important;
+}
+
+.dropdown-menu li a {
+    color:black !important;
+}
+
+navbar-nav>li>a:hover, .navbar-nav>li:hover>a, .navbar-nav>li.active>a {
+    border-bottom-color: orange;
+}
+
+#candidateTable{
+    margin-top: 80px;
+}
+
+.l-text{
+    color :#263bd6 !important;
+}
+.label-success{
+    background-color:#F38630;
+    
+}
+.userbtns .nav-tabs>li.active a:after {
+    border-top: 10px solid #F38630;
+}

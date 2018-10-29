@@ -3,10 +3,11 @@ var app = angular.module('starter.controllers', []);
 app.controller('loginCtrl',function($scope,Web3jsObj,$window){
 
     // check if voter already loged in
-
+    
+debugger;
     const nationalId = localStorage.getItem("voterId");
     if(nationalId){
-        $window.location.href="/vappweb/index.html"
+        $window.location.href="/index.html"
     }
   
     Web3jsObj.web3Init(contractsInfo.main,MainAbi,public_key,private_key);
@@ -19,7 +20,8 @@ $scope.loginBtn=function(_voter){
     if(IsVoterExist != no_address){
         localStorage.setItem("voterId",_voter.nationalId);
         localStorage.setItem("vaddress",IsVoterExist);
-        $window.location.href="/vappweb/index.html";
+        $window.location.href="/index.html";
+
         
       }
       else{
@@ -76,7 +78,7 @@ $scope.addEther = function(_from,_fromPk,_to){
         
         if(!err){
             alert("voter created");    $.LoadingOverlay('hide');
-            $window.location.href="/vappweb/login.html";
+            $window.location.href="/login.html";
             
         }
 
@@ -161,7 +163,7 @@ app.controller("indexCtrl",function($scope,Web3jsObj,Helper,$window)
 const isLogin = localStorage.getItem("voterId")
 if(!isLogin)
 {
-    $window.location.href="/vappweb/login.html"
+    $window.location.href="/login.html"
     return ;
 }
 
@@ -169,7 +171,7 @@ $scope.Logout= function(){
     
     localStorage.removeItem("voterId");
     localStorage.removeItem("vaddress");
-    $window.location.href="/vappweb/login.html";
+    $window.location.href="/login.html";
 }
     // end of check if loged in 
 ///// important
@@ -187,7 +189,9 @@ const StartDate=smartContract.getStartDate.call();
 const timeStampToDate=Helper.ConvertTimeStampToDate(TodayDate);
 
 // end of get settings
+
 $scope.fetchCandidate = function(){
+    
     const numberOfCandidate = smartContract.getCandidateNationalIDArrayLength.call();
     const candidatesNo = parseInt(JSON.parse(numberOfCandidate));
     const getCurrentVoterCity = smartContract.getVoterCity.call(voter_address);
@@ -201,7 +205,7 @@ for(var i =0 ; i < candidatesNo ;i++)
   var city = smartContract.getCandidateCity.call(address);
   var _nationalId = smartContract.getCandidateNational.call(address);
   var Campaign = smartContract.getCandidateCampaign.call(address);
-  if(city == getCurrentVoterCity){
+  if(city.toLowerCase() == getCurrentVoterCity.toLowerCase()){
     var candidate = {nameCandidate : name , city :city ,Campaign : Campaign ,nationalId : _nationalId };
     items.push(candidate);
   }
@@ -419,14 +423,14 @@ app.controller("HistoryCtrl",function($scope,Web3jsObj,$window)
     const isLogin = localStorage.getItem("voterId")
 if(!isLogin)
 {
-    $window.location.href="/vappweb/login.html"
+    $window.location.href="/login.html"
     return ;
 }
 
 $scope.Logout= function(){
     localStorage.removeItem("voterId");
     localStorage.removeItem("vaddress");
-    $window.location.href="/vappweb/login.html";
+    $window.location.href="/login.html";
 }
     // end of check if loged in 
     Web3jsObj.web3Init(contractsInfo.main,MainAbi,public_key,private_key);

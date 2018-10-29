@@ -61,10 +61,10 @@ type="text/javascript">
 
 <table id="candidateTable" class="table table-dark">
     <thead>
-        <th>Candidate Name</th>
-        <th>Candidate City</th>
-        <th>Candidate Campaign</th>
-        <th>Operations</th>
+        <th>{{lang.CandidateName}}</th>
+        <th>{{lang.CandidateCity}}</th>
+        <th>{{lang.CandidateCampaign}}</th>
+        <th>{{lang.Operations}}</th>
     </thead>
     <tbody ng-repeat ="x in candidates">
         <tr>
@@ -74,7 +74,7 @@ type="text/javascript">
             <td>{{x.city}}
             <td>{{x.Campaign}}</td>                                    
             </td>
-            <td><span ng-click="grantVote(x.nationalId)" style="cursor: pointer;" class="label label-success">Vote</span></td>
+            <td><span ng-click="grantVote(x.nationalId)" style="cursor: pointer;" class="label label-success">{{lang.Vote}}</span></td>
         </tr>
     </tbody>
 </table>

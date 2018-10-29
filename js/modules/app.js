@@ -21,7 +21,8 @@ angular.module('starter', [ 'starter.controllers','starter.services','720kb.date
                 VoterLogin:"الدخول",
                 Login:"الدخول",
                 NewUser:" مسجل جديد",
-                Vote:"	تصويت"
+                Vote:"تصويت",
+                Language :"إنجليزي"
         }
         
         :{
@@ -45,7 +46,9 @@ angular.module('starter', [ 'starter.controllers','starter.services','720kb.date
                 VoterLogin:"Voter Login",
                 Login:"Login",
                 NewUser:" New User",
-                Vote:"	Vote"
+                Vote:"Vote",
+                Language :"Arabic"
+
                 
         }
 $rootScope.lang=lang;

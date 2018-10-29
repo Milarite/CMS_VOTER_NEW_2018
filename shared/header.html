@@ -7,7 +7,7 @@
           </div>
           <div class="clearfix"></div>
         </div>
-        <div class="col-md-10 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="navbar navbar-default" role="navigation">
             <div class="navbar-collapse collapse" id="nav-main">
               <ul class="nav navbar-nav">
@@ -17,6 +17,7 @@
                 </li>
                 <li ng-if="notLogin"><a href="login.html">{{lang.Login}}</a></li>
                 <li ng-if="notLogin"><a href="register.html">{{lang.SignUp}}</a></li>
+                <li><a  href="javascript:void(0)" ng-click="switchLanguage()">{{lang.Language}}</a></li>
                
                
                 <li ng-if="!notLogin"><a href="history.html">{{lang.HISTORY}}</a></li>
@@ -31,3 +32,4 @@
       </div>
     </div>
   </div>
+

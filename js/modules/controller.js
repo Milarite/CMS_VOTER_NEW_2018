@@ -2,9 +2,23 @@ var app = angular.module('starter.controllers', []);
 
 app.controller('loginCtrl',function($scope,Web3jsObj,$window){
 
+    $scope.switchLanguage = function (){
+     
+        let lang = localStorage.getItem('lang');
+        if(!lang)
+        {
+            localStorage.setItem('lang','AR');
+        }else if(lang == 'AR'){
+            localStorage.setItem('lang','Eng')
+        }else{
+            localStorage.setItem('lang','AR');
+        }
+        location.reload();
+
+    }
     // check if voter already loged in
     
-debugger;
+
     const nationalId = localStorage.getItem("voterId");
     if(nationalId){
         $window.location.href="/index.html"
@@ -37,7 +51,20 @@ $scope.loginBtn=function(_voter){
 });
 
 app.controller("signupCtrl",function($scope,Web3jsObj,$window){
+    $scope.switchLanguage = function (){
+     
+        let lang = localStorage.getItem('lang');
+        if(!lang)
+        {
+            localStorage.setItem('lang','AR');
+        }else if(lang == 'AR'){
+            localStorage.setItem('lang','Eng')
+        }else{
+            localStorage.setItem('lang','AR');
+        }
+        location.reload();
 
+    }
     Web3jsObj.web3Init(contractsInfo.main,MainAbi,public_key,private_key);
     Web3jsObj.Web3Facotry(rinkebyUrl);
     const smartContract = Web3jsObj.Web3SmartContract();
@@ -158,7 +185,20 @@ $scope.SignUpBtn=function(_voter){
 app.controller("indexCtrl",function($scope,Web3jsObj,Helper,$window)
 
 {
+    $scope.switchLanguage = function (){
+     
+        let lang = localStorage.getItem('lang');
+        if(!lang)
+        {
+            localStorage.setItem('lang','AR');
+        }else if(lang == 'AR'){
+            localStorage.setItem('lang','Eng')
+        }else{
+            localStorage.setItem('lang','AR');
+        }
+        location.reload();
 
+    }
     /// check if loged in 
 const isLogin = localStorage.getItem("voterId")
 if(!isLogin)
@@ -418,7 +458,20 @@ $.LoadingOverlay('hide');
 
 app.controller("HistoryCtrl",function($scope,Web3jsObj,$window)
 {
+    $scope.switchLanguage = function (){
+     
+        let lang = localStorage.getItem('lang');
+        if(!lang)
+        {
+            localStorage.setItem('lang','AR');
+        }else if(lang == 'AR'){
+            localStorage.setItem('lang','Eng')
+        }else{
+            localStorage.setItem('lang','AR');
+        }
+location.reload();
 
+    }
     // check if loged in
     const isLogin = localStorage.getItem("voterId")
 if(!isLogin)
@@ -449,6 +502,7 @@ $scope.Logout= function(){
         const Campaign=smartContract.getCandidateCampaign.call(address);
         console.log("candidate Adderess",candidateAddress);
         var candidateInfo={name : name , city :city ,Campaign : Campaign  };
+        if(name)
         array.push (candidateInfo);
       
     }

@@ -70,28 +70,28 @@ type="text/javascript">
         <div class="userccount">
           <div class="socialLogin">
 
-          <h5>Voter Login</h5>
+          <h5>{{lang.VoterLogin}}</h5>
           <!-- login form -->
           <form id="login" name="login">
           <div class="formpanel">
             <div class="formrow">
-              <input type="text" class="form-control" id="nationalId" name="nationalId" ng-model="voter.nationalId" placeholder="National Id" required>
+              <input type="text" class="form-control" id="nationalId" name="nationalId" ng-model="voter.nationalId" placeholder="{{lang.nationalityID}}" required>
               <br/>
-              <span class="error-msg" ng-show="login.nationalId.$touched && login.nationalId.$invalid">this field is required</span>
+              <span class="error-msg" ng-show="login.nationalId.$touched && login.nationalId.$invalid">{{lang.thisfieldisrequired}}</span>
             </div>
             <div class="formrow">
-              <input type="password" class="form-control"  id="password" name="password" ng-model="voter.password" placeholder="Password" required>
-              <p ng-show="loginForm.password.$dirty && loginForm.password.$error.required">*password is required </p>
+              <input type="password" class="form-control"  id="password" name="password" ng-model="voter.password" placeholder="{{lang.password}}" required>
+              <p ng-show="loginForm.password.$dirty && loginForm.password.$error.required">{{lang.passwordisrequired}}</p>
               <br/>
-              <span class="error-msg" ng-show="login.password.$touched && login.password.$invalid">this field is required</span>
+              <span class="error-msg" ng-show="login.password.$touched && login.password.$invalid">{{lang.thisfieldisrequired}}</span>
             </div>
-            <input ng-click="loginBtn(voter)" ng-disabled = "(login.nationalId.$invalid || !login.nationalId.$dirty) || (login.password.$invalid || !login.password.$dirty)" type="submit" class="btn" value="Login">
+            <input ng-click="loginBtn(voter)" ng-disabled = "(login.nationalId.$invalid || !login.nationalId.$dirty) || (login.password.$invalid || !login.password.$dirty)" type="submit" class="btn" value="{{lang.Login}}">
           </div>
         </form>
           <!-- login form  end--> 
           
           <!-- sign up form -->
-          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a class="l-text" href="register.html">Signup</a></div>
+          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> {{lang.NewUser}} <a class="l-text" href="register.html">{{lang.SignUp}}</a></div>
           <!-- sign up form end--> 
           
         </div>

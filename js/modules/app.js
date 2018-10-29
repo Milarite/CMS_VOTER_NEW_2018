@@ -2,7 +2,7 @@ angular.module('starter', [ 'starter.controllers','starter.services','720kb.date
 {
         let lang=localStorage.getItem("lang") == "AR" ? {
                 SignUp:"تسجيل الدخول",
-                Voter:"اسم المصوت",
+                Voter:"صوت لمرشحك ",
                 nationalityID:"الرقم الوطني",
                 password:"كلمة المرور" ,
                 Name:"الإسم",
@@ -20,9 +20,13 @@ angular.module('starter', [ 'starter.controllers','starter.services','720kb.date
                 Operations:"العمليات",
                 VoterLogin:"الدخول",
                 Login:"الدخول",
-                NewUser:" مسجل جديد",
+                NewUser:" مسجل جديد ؟",
                 Vote:"تصويت",
-                Language :"إنجليزي"
+                Language :"إنجليزي",
+                thisfieldisrequired :"يجب ثعبئة الحقل",
+                passwordisrequired :"*يجب إدخال كلمة المرور",
+                Nationailtyidalreadyexist:"الرقم الوطني موجود "
+
         }
         
         :{
@@ -47,8 +51,10 @@ angular.module('starter', [ 'starter.controllers','starter.services','720kb.date
                 Login:"Login",
                 NewUser:" New User",
                 Vote:"Vote",
-                Language :"Arabic"
-
+                Language :"Arabic",
+                thisfieldisrequired :"this field is required",
+                passwordisrequired :"*password is required",
+                Nationailtyidalreadyexist:"Nationailty id already exist"
                 
         }
 $rootScope.lang=lang;

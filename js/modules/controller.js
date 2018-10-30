@@ -51,6 +51,30 @@ $scope.loginBtn=function(_voter){
 });
 
 app.controller("signupCtrl",function($scope,Web3jsObj,$window){
+    //dropdown city 
+    let hash = null ;
+if(!localStorage.getItem('lang'))
+{
+    hash = "QmNrVwBRMzHWUBVZUzDhc35LUyh9zcBhFb4UFiaYUSUPDo" ;
+}
+else if(localStorage.getItem("lang") == "AR"){
+   hash = "QmdadT2nVvWLxJeytJMEUaHugqqmuVn2YZ6tZYDh8TGmf7";
+} 
+else{
+    hash = "QmNrVwBRMzHWUBVZUzDhc35LUyh9zcBhFb4UFiaYUSUPDo";
+}
+let ipfs = IpfsApi('ipfs.infura.io', '5001', {protocol: 'https'})
+ipfs.files.cat(hash, (error, buf) => {
+    if(error) console.log(error);
+    let result = buf.toString('utf8');
+    result = JSON.parse(result);
+
+    
+    $scope.countries = result.lang;
+    
+  })
+
+
     $scope.switchLanguage = function (){
      
         let lang = localStorage.getItem('lang');

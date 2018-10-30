@@ -28,6 +28,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="css/angular-datepicker.css"/>
+<script src="./js/modules/ipfsApi.js"></script>  
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -117,8 +118,10 @@ type="text/javascript">
         </div>
         <div class="formrow">
                 <select name="city" id="city" ng-model="voter.city" class="form-control" required>
-                        <option value="">{{lang.city}}</option>                                                       
-                    <option value="Amman">Amman</option>
+                        <option value="">{{lang.city}}</option> 
+                            
+                            <option ng-repeat="x in countries" >{{x}}></option>                                                  
+                    <!-- <option value="Amman">Amman</option>
                     
                     <option value="Irbid">Irbid</option>
                     <option value="Zarqa">Zarqa</option>
@@ -130,7 +133,7 @@ type="text/javascript">
                     <option value="Aqapa">Aqapa</option>
                     <option value="Rumtha">Rumtha</option>
                     <option value="salt">salt</option>
-                
+                 -->
                   </select>
                   <span class="error-msg" ng-show="signup.city.$touched && signup.city.$invalid">{{lang.thisfieldisrequired}}</span>
             </div>

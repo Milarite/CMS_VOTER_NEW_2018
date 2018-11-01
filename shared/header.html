@@ -1,25 +1,35 @@
 <div class="header">
     <div class="container">
       <div class="row">
-        <div class="col-md-2 col-sm-3 col-xs-12"> <a href="index.html" class="logo"></a>
+        <div class="col-md-2 col-sm-3 col-xs-12">   <a href="index.html" class="logo"></a>
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          </div>
+              
+           </div>
+           
           <div class="clearfix"></div>
         </div>
-        <div class="col-md-10 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <img src="logo.png" class='logoimg'>
+
           <div class="navbar navbar-default" role="navigation">
+
             <div class="navbar-collapse collapse" id="nav-main">
+              
               <ul class="nav navbar-nav">
-                <li><a href="index.html">Home </a>
+               
+                <li><a href="index.html">{{lang.HOME}} </a>
                  
                 </li>
                 <li ><a ng-if="notLogin" href="login.html">Login</a></li>
                 <li><a href="register.html">Register</a></li>
+                <li ng-if="notLogin"><a href="login.html">{{lang.Login}}</a></li>
+                <li ng-if="notLogin"><a href="register.html">{{lang.SignUp}}</a></li>
+                <li><a  href="javascript:void(0)" ng-click="switchLanguage()">{{lang.Language}}</a></li>
                
                
-                <li><a href="history.html">History</a></li>
-                <li ng-if="!notLogin"><a href="javascript:void(0);" ng-click="Logout()">Logout</a></li>
+                <li ng-if="!notLogin"><a href="history.html">{{lang.HISTORY}}</a></li>
+                <li ng-if="!notLogin"><a href="javascript:void(0);" ng-click="Logout()">{{lang.LOGOUT}}</a></li>
                 <!-- <li class="postjob"><a href="post-job.html">Post a job</a></li> -->
                 <!-- <li class="jobseeker"><a href="candidate-listing.html">Job Seeker</a></li> -->
               </ul>
@@ -30,3 +40,4 @@
       </div>
     </div>
   </div>
+

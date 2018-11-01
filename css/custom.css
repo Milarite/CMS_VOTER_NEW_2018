@@ -3,11 +3,15 @@
 }
 .userccount{
     margin-bottom: 20px !important;
+
+    background-color:#b33b29 !important;
+    border:  0px solid white !important;
+
 }
 
 .error-msg{
 
-    color:red;
+    color:white;
 }
 img{
 
@@ -17,13 +21,12 @@ img{
     color: orange;
 }
 body{
-    background-color:#f0f0f0;
+    background-color:#302f2d !important;
+    color: #ffff00;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .margin-top{
     margin-top: 100px;
-}
-.header{
-    background-color:black !important;
 }
 
 a{
@@ -31,11 +34,11 @@ a{
 }
 
 .dropdown-menu li a {
-    color:black !important;
+    color:#302f2d !important;
 }
 
 navbar-nav>li>a:hover, .navbar-nav>li:hover>a, .navbar-nav>li.active>a {
-    border-bottom-color: orange;
+    border-bottom-color: #b33b29;
 }
 
 #candidateTable{
@@ -43,12 +46,72 @@ navbar-nav>li>a:hover, .navbar-nav>li:hover>a, .navbar-nav>li.active>a {
 }
 
 .l-text{
-    color :#263bd6 !important;
+    color :lightblue !important;
 }
 .label-success{
-    background-color:#F38630;
+    background-color:#b33b29;
     
 }
 .userbtns .nav-tabs>li.active a:after {
-    border-top: 10px solid #F38630;
+    border-top: 10px solid #b33b29;
+}
+
+.formpanel .btn{
+    background-color:#b33b29;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.socialLogin{
+    background-color: #b33b29 !important;
+
+}
+html {
+    background-color:#302f2d !important;
+}
+
+.row{
+    background-color:#302f2d !important;
+}
+
+.form-control{
+     width: 250px;
+     margin-left: auto !important;
+     margin-right: auto !important;
+     color:white;
+     background-color:black;
+
+}
+.table table-dark{
+    background-color: blue;
+}
+h5{
+    color: white !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.newuser{
+    color: yellow;
+}
+.navbar-nav{
+
+}
+.listpgWraper{
+    background-color: #302f2d;
+}
+#city{
+    height: 44px;
+}
+.error-msg{
+    text-align: center !important;
+    color: #ffff00 !important;
+}
+.formrow{
+    text-align: center !important;
+}
+.logoimg{
+    height: 75px !important;
+    width: 290px !important;
+}
+.ng-binding{
+    padding-top: 6px;
 }

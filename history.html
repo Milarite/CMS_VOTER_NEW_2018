@@ -18,7 +18,10 @@
 <link href="./css/font-awesome.css" rel="stylesheet">
 
 <!-- Custom Style -->
+<!-- Custom Style -->
 <link href="./css/main.css" rel="stylesheet">
+<link href="./css/custom.css" rel="stylesheet">
+<link href="./css/no-css.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -46,7 +49,7 @@ type="text/javascript">
 <script src="./js/modules/service.js"></script>
 <script src="./js/modules/config.js"></script>
 <script src="./js/modules/app.js"></script>
- <script>
+ <!-- <script>
                                                   $(function() {
                                                    $( ".timepicker" ).timepicker();
                                                   })
@@ -55,7 +58,7 @@ type="text/javascript">
                                                   $( function() {
                                                     $( "#datepicker" ).datepicker();
                                                   } );
-                                                  </script> -->
+                                                  </script> --> 
                                               <!-- end of app module
 <!-- end of angulars-->
 </head>
@@ -68,37 +71,33 @@ type="text/javascript">
 <div class="main-panel" >
 <div class="header">
   <div class="container">
-    <div class="row">
-      <div class="col-md-2 col-sm-3 col-xs-12"> <a href="index.html" class="logo"><img src="images/voter.png" alt="" /></a>
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-      
-      <div class="container">
-
-          <table id="candidateTable" class="table table-dark">
-              <thead>
-                  <th>Candidate Name</th>
-                  <th>Candidate City</th>
-                  <th>Candidate Campaign</th>
-                 
-              </thead>
-              <tbody ng-repeat ="x in candidates">
-                  <tr>
-                      <td>{{x.name}}
-                                                                  
-                      </td>
-                      <td>{{x.city}}</td>
-                      <td>{{x.Campaign}}</td>                                    
-                      </td>
-                      
-                  </tr>
-              </tbody>
-          </table>
-          </div>
+  
 </div>
+</div>
+<div class="container">
+
+    <table id="candidateTable" class="table table-dark">
+        <thead>
+            <th>{{lang.CandidateName}}</th>
+            <th>{{lang.CandidateCity}}</th>
+            <th>{{lang.CandidateCampaign}}</th>
+           
+        </thead>
+        <tbody ng-repeat ="x in candidates">
+            <tr>
+                <td>{{x.name}}
+                                                            
+                </td>
+                <td>{{x.city}}</td>
+                <td>{{x.Campaign}}</td>                                    
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
 <!-- Header end --> <!-- Page Title start -->
 <!-- <div class="pageTitle">
   <div class="container">
@@ -141,4 +140,16 @@ Page Title End  -->
 <!-- Bootstrap's JavaScript --> 
 
 </body>
+<script>
+    $(function(){
+    if(localStorage.getItem("lang") == "Eng")
+  {
+  document.querySelector("link[href='./css/no-css.css']").href = "./css/custom_ar.css";
+  }
+  else{
+  if(document.querySelector("link[href='./css/custom_ar.css']"))
+  document.querySelector("link[href='./css/custom_ar.css']").href = "./css/no.css'";
+  }
+  })
+  </script>
 </html>

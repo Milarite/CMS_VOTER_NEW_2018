@@ -19,6 +19,7 @@
 <!-- Custom Style -->
 <link href="./css/main.css" rel="stylesheet">
 <link href="./css/custom.css" rel="stylesheet">
+<link href="./css/no-css.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -43,7 +44,7 @@ type="text/javascript">
 </head>
 <body ng-app="starter" ng-controller="loginCtrl">
 <!-- Header start -->
-<header ng-include="'./shared/header.html'">
+<!-- <header ng-include="'./shared/header.html'"> -->
    
 </header>
 <!-- Header end --> 
@@ -68,29 +69,30 @@ type="text/javascript">
       <div class="col-md-6 col-md-offset-3">
         <div class="userccount">
           <div class="socialLogin">
+            <img src="logo.png" class='logoimg'>
 
-          <h5>Voter Login</h5>
+          <h5>{{lang.VoterLogin}}</h5>
           <!-- login form -->
           <form id="login" name="login">
           <div class="formpanel">
             <div class="formrow">
-              <input type="text" class="form-control" id="nationalId" name="nationalId" ng-model="voter.nationalId" placeholder="National Id" required>
+              <input type="text" class="form-control" id="nationalId" name="nationalId" ng-model="voter.nationalId" placeholder="{{lang.nationalityID}}" required>
               <br/>
-              <span class="error-msg" ng-show="login.nationalId.$touched && login.nationalId.$invalid">this field is required</span>
+              <span class="error-msg" ng-show="login.nationalId.$touched && login.nationalId.$invalid">{{lang.thisfieldisrequired}}</span>
             </div>
             <div class="formrow">
-              <input type="password" class="form-control"  id="password" name="password" ng-model="voter.password" placeholder="Password" required>
-              <p ng-show="loginForm.password.$dirty && loginForm.password.$error.required">*password is required </p>
+              <input type="password" class="form-control"  id="password" name="password" ng-model="voter.password" placeholder="{{lang.password}}" required>
+              <p ng-show="loginForm.password.$dirty && loginForm.password.$error.required">{{lang.passwordisrequired}}</p>
               <br/>
-              <span class="error-msg" ng-show="login.password.$touched && login.password.$invalid">this field is required</span>
+              <span class="error-msg" ng-show="login.password.$touched && login.password.$invalid">{{lang.thisfieldisrequired}}</span>
             </div>
-            <input ng-click="loginBtn(voter)" ng-disabled = "(login.nationalId.$invalid || !login.nationalId.$dirty) || (login.password.$invalid || !login.password.$dirty)" type="submit" class="btn" value="Login">
+            <input ng-click="loginBtn(voter)" ng-disabled = "(login.nationalId.$invalid || !login.nationalId.$dirty) || (login.password.$invalid || !login.password.$dirty)" type="submit" class="btn" value="{{lang.Login}}">
           </div>
         </form>
           <!-- login form  end--> 
           
           <!-- sign up form -->
-          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a class="l-text" href="register.html">Signup</a></div>
+          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> {{lang.NewUser}} <a class="l-text" href="register.html">{{lang.SignUp}}</a></div>
           <!-- sign up form end--> 
           
         </div>
@@ -112,3 +114,16 @@ type="text/javascript">
 <script src="./js/script.js"></script>
 </body>
 </html>
+
+<script>
+  $(function(){
+  if(localStorage.getItem("lang") == "Eng")
+{
+document.querySelector("link[href='./css/no-css.css']").href = "./css/custom_ar.css";
+}
+else{
+if(document.querySelector("link[href='./css/custom_ar.css']"))
+document.querySelector("link[href='./css/custom_ar.css']").href = "./css/no.css'";
+}
+})
+</script>

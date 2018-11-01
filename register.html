@@ -19,6 +19,7 @@
 <!-- Custom Style -->
 <link href="./css/main.css" rel="stylesheet">
 <link href="./css/custom.css" rel="stylesheet">
+<link href="./css/no-css.css" rel="stylesheet">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,6 +28,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="css/angular-datepicker.css"/>
+<script src="./js/modules/ipfsApi.js"></script>  
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -62,6 +64,7 @@ type="text/javascript">
 <!-- Header end --> <!-- Page Title start -->
 <!-- <div class="pageTitle">
   <div class="container">
+
     <div class="row">
       <div class="col-md-6 col-sm-6">
         <h1 class="page-heading">Register</h1>
@@ -73,50 +76,54 @@ type="text/javascript">
   </div>
 </div> -->
 <!-- Page Title End -->
-
 <div class="listpgWraper">
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="userccount">
           
-            <h2>Sign up</h5>
+            <h2>{{lang.Signup}}</h5>
           <div class="userbtns">
             <ul class="nav nav-tabs">
-              <li class="active"><a style="background-color:#F38630" data-toggle="tab" href="javascript:void(0);">Voter</a></li>
+              <li class="active"><a style="background-color:#b33b29" data-toggle="tab" href="javascript:void(0);">{{lang.Voter}}</a></li>
             </ul>
           </div>
           <div class="tab-content">
             <div id="voter" class="formpanel tab-pane fade in active">
                 <form id="signup" name="signup">
               <div class="formrow">
-                <input type="text" ng-change="NationalIdValidation(voter.nationalityID)" name="nationalityID" id="nationalityID" ng-model="voter.nationalityID" class="form-control" placeholder="Nationality ID" required>
-                <span class="error-msg" ng-show="signup.nationalityID.$touched && signup.nationalityID.$invalid">this field is required</span>
-                <span class="error-msg" ng-show="signup.nationalityID.$touched && isVoterExistCheck && !signup.nationalityID.$invalid">Nationailty id already exist</span>
+                <input type="text" ng-change="NationalIdValidation(voter.nationalityID)" name="nationalityID" id="nationalityID" ng-model="voter.nationalityID" class="form-control" placeholder="{{lang.nationalityID}}" required>
+                <span class="error-msg" ng-show="signup.nationalityID.$touched && signup.nationalityID.$invalid">{{lang.thisfieldisrequired}}</span>
+                <span class="error-msg" ng-show="signup.nationalityID.$touched && isVoterExistCheck && !signup.nationalityID.$invalid">{{lang.Nationailtyidalreadyexist}}</span>
+                </span>
                 
 
               </div>
               <div class="formrow">
-                <input type="password" name="password" id="password" class="form-control" ng-model="voter.password" placeholder="Password" required>
-                <span class="error-msg" ng-show="signup.password.$touched && signup.password.$invalid">this field is required</span>
+                <input type="password" name="password" id="password" class="form-control" ng-model="voter.password" placeholder="{{lang.password}}" required>
+                <span class="error-msg" ng-show="signup.password.$touched && signup.password.$invalid">{{lang.thisfieldisrequired}}</span>
               </div>
               <div class="formrow">
-                <input type="text" name="name" id="name" class="form-control" ng-model="voter.name" placeholder="Name" required>
-                <span class="error-msg" ng-show="signup.name.$touched && signup.name.$invalid">this field is required</span>
+                <input type="text" name="name" id="name" class="form-control" ng-model="voter.name" placeholder="{{lang.Name}}" required>
+                <span class="error-msg" ng-show="signup.name.$touched && signup.name.$invalid">{{lang.thisfieldisrequired}}</span>
               </div>
               <div class="formrow">
-                <input type="text" name="year" id="year" class="form-control" ng-model="voter.year" placeholder="year" required>
-                <span class="error-msg" ng-show="signup.year.$touched && signup.year.$invalid">this field is required</span>
+                <input type="text" name="year" id="year" class="form-control" ng-model="voter.year" placeholder="{{lang.Year}}" required>
+                <span class="error-msg" ng-show="signup.year.$touched && signup.year.$invalid">{{lang.thisfieldisrequired}}</span>
               </div>
               <div class="formrow">
-                  <datepicker date-format="dd/MM/yyyy"> <input type="text" name="birthOfdate" id="datepicker" class="form-control" ng-model="voter.birthOfDate" placeholder="Birth Of Date" required/>
+                  <datepicker date-format="dd/MM/yyyy"> <input type="text" name="birthOfdate" id="datepicker" class="form-control" ng-model="voter.birthOfDate" placeholder="{{lang.birthOfDate}}" required/>
            </datepicker>
-                    <span class="error-msg" ng-show="signup.birthOfDate.$touched && signup.birthOfDate.$invalid">this field is required</span>
+                    <span class="error-msg" ng-show="signup.birthOfDate.$touched && signup.birthOfDate.$invalid">{{lang.thisfieldisrequired}}</span>
         </div>
+        <div class="formrow"></div>
         <div class="formrow">
                 <select name="city" id="city" ng-model="voter.city" class="form-control" required>
-                        <option value="">Select City</option>                                                       
-                    <option value="Amman">Amman</option>
+                        <option value="">{{lang.city}}</option> 
+                            
+                            <option ng-repeat="x in countries" >{{x}}></option>                                                  
+                    <!-- <option value="Amman">Amman</option>
                     
                     <option value="Irbid">Irbid</option>
                     <option value="Zarqa">Zarqa</option>
@@ -128,17 +135,18 @@ type="text/javascript">
                     <option value="Aqapa">Aqapa</option>
                     <option value="Rumtha">Rumtha</option>
                     <option value="salt">salt</option>
-                
+                 -->
                   </select>
-                  <span class="error-msg" ng-show="signup.city.$touched && signup.city.$invalid">this field is required</span>
+                  <span class="error-msg" ng-show="signup.city.$touched && signup.city.$invalid">{{lang.thisfieldisrequired}}</span>
             </div>
               <div class="formrow">
             
-              <input ng-click="SignUpBtn(voter)" style="background-color:#F38630" ng-disabled="signup.$invalid || isVoterExistCheck" type="submit" class="btn" value="Signup">
+              <input ng-click="SignUpBtn(voter)" style="background-color:#b33b29" ng-disabled="signup.$invalid || isVoterExistCheck" type="submit" class="btn" value="{{lang.SignUp}}">
             </div>
         </form>
           </div>
-          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> Already a Member? <a class="l-text" href="login.html" style="color:#F38630">Login Here</a></div>
+          
+          <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i>{{lang.AlreadyaMember}}<a class="l-text" href="login.html" style="color:#F38630"> {{lang.LoginHere}}</a></div>
         </div>
       </div>
     </div>
@@ -160,4 +168,16 @@ c
 <!-- Custom js --> 
 <script src="./js/script.js"></script>
 </body>
+<script>
+    $(function(){
+    if(localStorage.getItem("lang") == "Eng")
+  {
+  document.querySelector("link[href='./css/no-css.css']").href = "./css/custom_ar.css";
+  }
+  else{
+  if(document.querySelector("link[href='./css/custom_ar.css']"))
+  document.querySelector("link[href='./css/custom_ar.css']").href = "./css/no.css'";
+  }
+  })
+  </script>
 </html>

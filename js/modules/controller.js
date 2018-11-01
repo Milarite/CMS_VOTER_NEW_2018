@@ -2,11 +2,26 @@ var app = angular.module('starter.controllers', []);
 
 app.controller('loginCtrl',function($scope,Web3jsObj,$window){
 
+    $scope.switchLanguage = function (){
+     
+        let lang = localStorage.getItem('lang');
+        if(!lang)
+        {
+            localStorage.setItem('lang','AR');
+        }else if(lang == 'AR'){
+            localStorage.setItem('lang','Eng')
+        }else{
+            localStorage.setItem('lang','AR');
+        }
+        location.reload();
+
+    }
     // check if voter already loged in
+    
 
     const nationalId = localStorage.getItem("voterId");
     if(nationalId){
-        $window.location.href="/vappweb/index.html"
+        $window.location.href="/index.html"
     }
   
     Web3jsObj.web3Init(contractsInfo.main,MainAbi,public_key,private_key);
@@ -19,7 +34,8 @@ $scope.loginBtn=function(_voter){
     if(IsVoterExist != no_address){
         localStorage.setItem("voterId",_voter.nationalId);
         localStorage.setItem("vaddress",IsVoterExist);
-        $window.location.href="/vappweb/index.html";
+        $window.location.href="/index.html";
+
         
       }
       else{
@@ -35,7 +51,44 @@ $scope.loginBtn=function(_voter){
 });
 
 app.controller("signupCtrl",function($scope,Web3jsObj,$window){
+    //dropdown city 
+    let hash = null ;
+if(!localStorage.getItem('lang'))
+{
+    hash = "QmNrVwBRMzHWUBVZUzDhc35LUyh9zcBhFb4UFiaYUSUPDo" ;
+}
+else if(localStorage.getItem("lang") == "AR"){
+   hash = "QmdadT2nVvWLxJeytJMEUaHugqqmuVn2YZ6tZYDh8TGmf7";
+} 
+else{
+    hash = "QmNrVwBRMzHWUBVZUzDhc35LUyh9zcBhFb4UFiaYUSUPDo";
+}
+let ipfs = IpfsApi('ipfs.infura.io', '5001', {protocol: 'https'})
+ipfs.files.cat(hash, (error, buf) => {
+    if(error) console.log(error);
+    let result = buf.toString('utf8');
+    result = JSON.parse(result);
 
+    
+    $scope.countries = result.lang;
+    
+  })
+
+
+    $scope.switchLanguage = function (){
+     
+        let lang = localStorage.getItem('lang');
+        if(!lang)
+        {
+            localStorage.setItem('lang','AR');
+        }else if(lang == 'AR'){
+            localStorage.setItem('lang','Eng')
+        }else{
+            localStorage.setItem('lang','AR');
+        }
+        location.reload();
+
+    }
     Web3jsObj.web3Init(contractsInfo.main,MainAbi,public_key,private_key);
     Web3jsObj.Web3Facotry(rinkebyUrl);
     const smartContract = Web3jsObj.Web3SmartContract();
@@ -76,7 +129,7 @@ $scope.addEther = function(_from,_fromPk,_to){
         
         if(!err){
             alert("voter created");    $.LoadingOverlay('hide');
-            $window.location.href="/vappweb/login.html";
+            $window.location.href="/login.html";
             
         }
 
@@ -156,12 +209,25 @@ $scope.SignUpBtn=function(_voter){
 app.controller("indexCtrl",function($scope,Web3jsObj,Helper,$window)
 
 {
+    $scope.switchLanguage = function (){
+     
+        let lang = localStorage.getItem('lang');
+        if(!lang)
+        {
+            localStorage.setItem('lang','AR');
+        }else if(lang == 'AR'){
+            localStorage.setItem('lang','Eng')
+        }else{
+            localStorage.setItem('lang','AR');
+        }
+        location.reload();
 
+    }
     /// check if loged in 
 const isLogin = localStorage.getItem("voterId")
 if(!isLogin)
 {
-    $window.location.href="/vappweb/login.html"
+    $window.location.href="/login.html"
     return ;
 }
 
@@ -169,7 +235,7 @@ $scope.Logout= function(){
     
     localStorage.removeItem("voterId");
     localStorage.removeItem("vaddress");
-    $window.location.href="/vappweb/login.html";
+    $window.location.href="/login.html";
 }
     // end of check if loged in 
 ///// important
@@ -187,7 +253,9 @@ const StartDate=smartContract.getStartDate.call();
 const timeStampToDate=Helper.ConvertTimeStampToDate(TodayDate);
 
 // end of get settings
+
 $scope.fetchCandidate = function(){
+    
     const numberOfCandidate = smartContract.getCandidateNationalIDArrayLength.call();
     const candidatesNo = parseInt(JSON.parse(numberOfCandidate));
     const getCurrentVoterCity = smartContract.getVoterCity.call(voter_address);
@@ -201,7 +269,7 @@ for(var i =0 ; i < candidatesNo ;i++)
   var city = smartContract.getCandidateCity.call(address);
   var _nationalId = smartContract.getCandidateNational.call(address);
   var Campaign = smartContract.getCandidateCampaign.call(address);
-  if(city == getCurrentVoterCity){
+  if(city.toLowerCase() == getCurrentVoterCity.toLowerCase()){
     var candidate = {nameCandidate : name , city :city ,Campaign : Campaign ,nationalId : _nationalId };
     items.push(candidate);
   }
@@ -414,19 +482,32 @@ $.LoadingOverlay('hide');
 
 app.controller("HistoryCtrl",function($scope,Web3jsObj,$window)
 {
+    $scope.switchLanguage = function (){
+     
+        let lang = localStorage.getItem('lang');
+        if(!lang)
+        {
+            localStorage.setItem('lang','AR');
+        }else if(lang == 'AR'){
+            localStorage.setItem('lang','Eng')
+        }else{
+            localStorage.setItem('lang','AR');
+        }
+location.reload();
 
+    }
     // check if loged in
     const isLogin = localStorage.getItem("voterId")
 if(!isLogin)
 {
-    $window.location.href="/vappweb/login.html"
+    $window.location.href="/login.html"
     return ;
 }
 
 $scope.Logout= function(){
     localStorage.removeItem("voterId");
     localStorage.removeItem("vaddress");
-    $window.location.href="/vappweb/login.html";
+    $window.location.href="/login.html";
 }
     // end of check if loged in 
     Web3jsObj.web3Init(contractsInfo.main,MainAbi,public_key,private_key);
@@ -445,6 +526,7 @@ $scope.Logout= function(){
         const Campaign=smartContract.getCandidateCampaign.call(address);
         console.log("candidate Adderess",candidateAddress);
         var candidateInfo={name : name , city :city ,Campaign : Campaign  };
+        if(name)
         array.push (candidateInfo);
       
     }

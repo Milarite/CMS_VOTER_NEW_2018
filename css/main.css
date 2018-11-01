@@ -2002,8 +2002,8 @@ a.wit-btn {
 *************************************************/
 .userccount {
 	background: #fff;
-	border: 1px solid #ddd;
 	padding: 25px 30px;
+	border:1px solid white;
 }
 .userccount p {
 	text-align: center;

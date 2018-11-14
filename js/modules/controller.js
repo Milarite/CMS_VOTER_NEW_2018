@@ -175,6 +175,7 @@ $scope.SignUpBtn=function(_voter){
                     
         
                 });
+                
         
                   tx.sign(ethereumjs.Buffer.Buffer.from(private_key.substr(2), 'hex'));
                   var raw = '0x' + tx.serialize().toString('hex');
@@ -519,7 +520,7 @@ $scope.Logout= function(){
     var array=[];
     for(var i =0;i<myVotesLength;i++)
     {
-        var address = smartContract.getCandidateNationalID.call(i);
+        var address = smartContract.getVotedCandidatesAddress.call(localStorage.getItem("vaddress"),i);
         const name=smartContract.getCandidateName.call(address);
         var city=smartContract.getCandidateCity.call(address);
         const candidateAddress=smartContract.getVotedCandidatesAddress.call(voter_address,i);
